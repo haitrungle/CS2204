@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kalos Cinema is where the cinematic wonders come to life.">
+  <title>
+    
+      Now showing
+     | Kalos Cinema
+  </title>
+  <!-- <script src="https://cdn.tailwindcss.com?plugins=typography"></script> -->
+  <link rel="stylesheet" media="screen" href="/base.css">
+  <link rel="icon" type="image/svg" href="/images/icon.svg">
+  
+<link rel="stylesheet" href="now-showing.css">
+
+</head>
+<body>
+  <header>
+    <div id="logo" class="flex-row-center">
+      <div>
+        <img src="/images/logo.svg" alt="Kalos Cinema logo">
+      </div>
+      <div>
+        <h1>
+          <a href="/">Kalos Cinema</a>
+        </h1>
+      </div>
+    </div>
+    <nav>
+      <ul class="navs">
+        <li class="nav"><a href="/">Home</a></li>
+        <li class="nav"><a href="/now-showing">Now showing</a></li>
+        <li class="nav"><a href="/ticket">Ticket</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="flex-col-center">
+    
+<div class="flex-col-center gap-4">
+<div>
+<label for="cinema-select">Select a cinema:</label>
+<select id="cinema-select">
+  
+    <option value="Admiralty">Kalos Admiralty</option>
+  
+    <option value="Mong Kok">Kalos Mong Kok</option>
+  
+    <option value="Tsim Sha Tsui">Kalos Tsim Sha Tsui</option>
+  
+</select>
+</div>
+<div class="row-center">
+
+  
+    <form action="/ticket">
+      <fieldset class="flex-col-center">
+        <legend class="movie-title">Casablanca</legend>
+        <img src="&#x2F;images&#x2F;casablanca.png" alt="Movie thumbnail" class="movie-thumbnail">
+        <input name="title" type="text" value="Casablanca" hidden>
+        <input name="cinema" type="text" value="Admiralty" hidden>
+        <div>
+          <label for="datetime-casablanca">Datetime:</label>
+          <select name="datetime" id="datetime-casablanca">
+            
+              <option value="2022-02-12T20:00:00">12 February — 20:00</option>
+            
+              <option value="2022-02-13T15:00:00">13 February — 15:00</option>
+            
+              <option value="2022-02-13T20:00:00">13 February — 20:00</option>
+            
+              <option value="2022-02-14T20:00:00">14 February — 20:00</option>
+            
+          </select>
+        </div>
+        <div>
+          <label for="house-casablanca">House:</label>
+          <select name="house" id="house-casablanca">
+            
+              <option value="1">House 1</option>
+            
+              <option value="2">House 2</option>
+            
+              <option value="3">House 3</option>
+            
+          </select>
+        </div>
+        <button type="submit">Buy Ticket</button>
+      </fieldset>
+    </form>
+  
+
+  
+
+  
+    <form action="/ticket">
+      <fieldset class="flex-col-center">
+        <legend class="movie-title">Earth</legend>
+        <img src="&#x2F;images&#x2F;nature.jpg" alt="Movie thumbnail" class="movie-thumbnail">
+        <input name="title" type="text" value="Earth" hidden>
+        <input name="cinema" type="text" value="Admiralty" hidden>
+        <div>
+          <label for="datetime-nature">Datetime:</label>
+          <select name="datetime" id="datetime-nature">
+            
+              <option value="2022-02-12T20:00:00">12 February — 20:00</option>
+            
+              <option value="2022-02-13T15:00:00">13 February — 15:00</option>
+            
+              <option value="2022-02-13T20:00:00">13 February — 20:00</option>
+            
+              <option value="2022-02-14T20:00:00">14 February — 20:00</option>
+            
+          </select>
+        </div>
+        <div>
+          <label for="house-nature">House:</label>
+          <select name="house" id="house-nature">
+            
+              <option value="1">House 1</option>
+            
+              <option value="2">House 2</option>
+            
+              <option value="3">House 3</option>
+            
+          </select>
+        </div>
+        <button type="submit">Buy Ticket</button>
+      </fieldset>
+    </form>
+  
+
+  
+
+  
+    <form action="/ticket">
+      <fieldset class="flex-col-center">
+        <legend class="movie-title">The Way Back to Yarasquin</legend>
+        <img src="&#x2F;images&#x2F;mochi.jpg" alt="Movie thumbnail" class="movie-thumbnail">
+        <input name="title" type="text" value="The Way Back to Yarasquin" hidden>
+        <input name="cinema" type="text" value="Admiralty" hidden>
+        <div>
+          <label for="datetime-cakemaking">Datetime:</label>
+          <select name="datetime" id="datetime-cakemaking">
+            
+              <option value="2022-02-12T20:00:00">12 February — 20:00</option>
+            
+              <option value="2022-02-13T15:00:00">13 February — 15:00</option>
+            
+              <option value="2022-02-13T20:00:00">13 February — 20:00</option>
+            
+              <option value="2022-02-14T20:00:00">14 February — 20:00</option>
+            
+          </select>
+        </div>
+        <div>
+          <label for="house-cakemaking">House:</label>
+          <select name="house" id="house-cakemaking">
+            
+              <option value="1">House 1</option>
+            
+              <option value="2">House 2</option>
+            
+              <option value="3">House 3</option>
+            
+          </select>
+        </div>
+        <button type="submit">Buy Ticket</button>
+      </fieldset>
+    </form>
+  
+
+  
+
+  
+    <form action="/ticket">
+      <fieldset class="flex-col-center">
+        <legend class="movie-title">Wild Horses</legend>
+        <img src="&#x2F;images&#x2F;wildlife.jpg" alt="Movie thumbnail" class="movie-thumbnail">
+        <input name="title" type="text" value="Wild Horses" hidden>
+        <input name="cinema" type="text" value="Admiralty" hidden>
+        <div>
+          <label for="datetime-wildlife">Datetime:</label>
+          <select name="datetime" id="datetime-wildlife">
+            
+              <option value="2022-02-12T20:00:00">12 February — 20:00</option>
+            
+              <option value="2022-02-13T15:00:00">13 February — 15:00</option>
+            
+              <option value="2022-02-13T20:00:00">13 February — 20:00</option>
+            
+              <option value="2022-02-14T20:00:00">14 February — 20:00</option>
+            
+          </select>
+        </div>
+        <div>
+          <label for="house-wildlife">House:</label>
+          <select name="house" id="house-wildlife">
+            
+              <option value="1">House 1</option>
+            
+              <option value="2">House 2</option>
+            
+              <option value="3">House 3</option>
+            
+          </select>
+        </div>
+        <button type="submit">Buy Ticket</button>
+      </fieldset>
+    </form>
+  
+
+  
+    <form action="/ticket">
+      <fieldset class="flex-col-center">
+        <legend class="movie-title">Mad Max: Fury Road</legend>
+        <img src="&#x2F;images&#x2F;wonders.jpg" alt="Movie thumbnail" class="movie-thumbnail">
+        <input name="title" type="text" value="Mad Max: Fury Road" hidden>
+        <input name="cinema" type="text" value="Admiralty" hidden>
+        <div>
+          <label for="datetime-wonders">Datetime:</label>
+          <select name="datetime" id="datetime-wonders">
+            
+              <option value="2022-02-12T20:00:00">12 February — 20:00</option>
+            
+              <option value="2022-02-13T15:00:00">13 February — 15:00</option>
+            
+              <option value="2022-02-13T20:00:00">13 February — 20:00</option>
+            
+              <option value="2022-02-14T20:00:00">14 February — 20:00</option>
+            
+          </select>
+        </div>
+        <div>
+          <label for="house-wonders">House:</label>
+          <select name="house" id="house-wonders">
+            
+              <option value="1">House 1</option>
+            
+              <option value="2">House 2</option>
+            
+              <option value="3">House 3</option>
+            
+          </select>
+        </div>
+        <button type="submit">Buy Ticket</button>
+      </fieldset>
+    </form>
+  
+
+</div>
+
+<section>
+  <h2 class="section-head">Cinemas Locations</h3>
+  <div class="row-center">
+    
+    <div class="cinema">
+      <p class="cinema-name">Kalos Admiralty</p>
+      <p>Address: 88 Queensway, Admiralty</p>
+      <img src="&#x2F;images&#x2F;map_admiralty.png" alt="Location of Kalos Admiralty">
+    </div>
+    
+    <div class="cinema">
+      <p class="cinema-name">Kalos Mong Kok</p>
+      <p>Address: Langham Place, Shantung Street, Mong Kok</p>
+      <img src="&#x2F;images&#x2F;map_mong_kok.png" alt="Location of Kalos Mong Kok">
+    </div>
+    
+    <div class="cinema">
+      <p class="cinema-name">Kalos Tsim Sha Tsui</p>
+      <p>Address: Cameron Street</p>
+      <img src="&#x2F;images&#x2F;map_tsim_sha_tsui.png" alt="Location of Kalos Tsim Sha Tsui">
+    </div>
+    
+  </div>
+</section>
+</div>
+
+  </main>
+  <footer>
+    <div>
+      <p>
+        © Copyright of resources belong to corresponding copyright owners. Fair use for education purpose.
+      </p>
+    </div>
+    <div>
+      <ul class="navs">
+        <li><a href="/">Home</a></li>
+        <li><a href="/design-2">Design</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

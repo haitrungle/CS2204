@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="design.css">
+</head>
+<body>
+  <main>
+    <h1>Design</h1>
+    <h2 id="design">Design</h2>
+<p>This section explains the various design decisions in making the webpages.</p>
+<h3 id="common">Common</h3>
+<p>a) Header: the <code>&lt;header&gt;</code> element is used for this purpose, as is standard.</p>
+<p>b) Main menu for navigation: the <code>&lt;nav&gt;</code> element is used to provide navigation links. It is nested in the <code>&lt;header&gt;</code>, as is common practice.</p>
+<p>c) Footer information: the <code>&lt;footer&gt;</code> element is used for this purpose.</p>
+<h3 id="home-page">Home page</h3>
+<p>d) Movies and information: the <code>&lt;video&gt;</code> element is used to display the movie, wrapped in a <code>&lt;div&gt;</code> with its information.</p>
+<p>e) <em>Now showing</em> and <em>Upcoming</em>: each is a <code>&lt;section&gt;</code> element, and each movie is contained in its own <code>&lt;article&gt;</code>, representing an independent, reusable piece of content.</p>
+<h3 id="now-showing">Now showing</h3>
+<p>f) Selection box: the <code>&lt;select&gt;</code> and <code>&lt;option&gt;</code> elements are used for the dropdown menu.</p>
+<p>g) List of movies: each selection is a <code>&lt;form&gt;</code> containing a <code>&lt;fieldset&gt;</code>, which allows submitting information and separating the selections nicely.</p>
+<p>h) Cinema locations: each location is wrapped in an <code>&lt;article&gt;</code> element, representing an independent, reusable piece of content.</p>
+<h3 id="ticket-page">Ticket page</h3>
+<p>j) Headings: the <code>&lt;h3&gt;</code> elements are used in this, as it provide enough emphasis without being too distracting.</p>
+<p>k) Seat plan: a <code>&lt;table&gt;</code> element is used for the whole seat plan, with each row describing a row in the layout, and each cell representing a seat.</p>
+<p>l) Confirm button: a <code>&lt;form&gt;</code> element containg the selected seats and a <code>&lt;button&gt;</code> that goes to the <em>Print</em> page.</p>
+<h3 id="print-page">Print page</h3>
+<p>m) Each ticket is contained in its own <code>&lt;div&gt;</code>, with the texts inside <code>&lt;p&gt;</code> tags.</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<ul>
+<li>Information for the movies: <a href="https://en.wikipedia.org">Wikipedia</a>. Licensed under <a href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">CC BY-SA 3.0</a>.</li>
+<li>Images:
+<ul>
+<li>Logo: <a href="https://github.com/phosphor-icons/phosphor-home">Phosphor Icons</a>. Licensed under <a href="https://github.com/phosphor-icons/phosphor-home/blob/master/LICENSE">MIT</a>.</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Mochi_in_a_Box_2.jpg">Mochi in a Box 2.jpg</a>. Licensed under <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0 1.0</a>.</li>
+<li>Map images: <a href="https://www.openstreetmap.org">OpenStreetMap</a>. Licensed under <a href="https://www.openstreetmap.org/copyright">CC BY-SA 2.0</a>.</li>
+</ul>
+</li>
+</ul>
+
+  </main>
+</body>
+</html>

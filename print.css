@@ -1,0 +1,9 @@
+@media print {
+    header, footer {
+        display: none;
+    }
+
+    .ticket {
+        break-after: page;
+    }
+}

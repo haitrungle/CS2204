@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'Casablanca';
+    src: url('/fonts/Casablanca.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.nav:nth-child(1) a {
+    border: none;
+    pointer-events: none;
+    cursor: default;
+}
+
+.video-big {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.5rem;
+    filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1)); 
+}
+
+@media (min-width: 1024px) { 
+    .video-big {
+        width: 50%;
+    }
+}
+
+.casablanca-title {
+    font-size: 4rem;
+    line-height: 1;
+    text-align: center;
+    font-family: 'Casablanca', et-book, serif;
+    margin-top: 2.5rem;
+}
+
+.movie-info {
+    width: 22rem;
+    display: flex;
+    gap: 0.5rem;
+}
