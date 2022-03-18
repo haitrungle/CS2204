@@ -2,7 +2,8 @@ body {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD",
+    "Book Antiqua", Georgia, serif;
   max-width: 72rem;
 }
 

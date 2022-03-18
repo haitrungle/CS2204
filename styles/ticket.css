@@ -1,22 +1,22 @@
 .nav:nth-child(3) a {
-    border: none;
-    pointer-events: none;
-    cursor: default;
+  border: none;
+  pointer-events: none;
+  cursor: default;
 }
 
 .info {
-    width: 12rem;
+  width: 12rem;
 }
 
 tr {
-    border-bottom-width: 1px; 
-    border-color: #1F2937;
+  border-bottom-width: 1px;
+  border-color: #1f2937;
 }
 
 td {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 td.seat:hover {
-    background-color: #E5E7EB;
+  background-color: #e5e7eb;
 }
