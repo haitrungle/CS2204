@@ -11,6 +11,7 @@
     <link rel="stylesheet" media="screen" href="./styles/base.css" />
     <link rel="icon" type="image/svg" href="./images/icon.svg" />
     <link rel="stylesheet" media="screen" href="./styles/index.css" />
+    <script type="text/javascript" src="scripts/movies.js"></script>
   </head>
   <body>
     <header>
@@ -32,181 +33,7 @@
         </ul>
       </nav>
     </header>
-    <main class="flex-col-center">
-      <div>
-        <video controls class="video-big">
-          <source
-            src="https://courses.cs.cityu.edu.hk/cs2204/video/casablanca-s.mp4"
-            type="video/mp4"
-          />
-          <source
-            src="https://courses.cs.cityu.edu.hk/cs2204/video/casablanca-s.ogg"
-            type="video/ogg"
-          />
-          Your browser doesn't support embed videos.
-        </video>
-        <h1 class="casablanca-title">Casablanca</h1>
-      </div>
-      <section>
-        <h2 class="section-head">Now showing</h2>
-        <div class="row-center">
-          <article>
-            <h3 class="movie-title">Casablanca</h3>
-            <div class="movie-info">
-              <img
-                src="./images/casablanca.png"
-                alt="Movie thumbnail"
-                class="movie-thumbnail"
-              />
-              <div>
-                <ul>
-                  <li>
-                    <span class="font-bold">Cast:</span> Humphrey Bogart, Ingrid
-                    Bergman, Paul Henreid
-                  </li>
-                  <li>
-                    <span class="font-bold">Director:</span> Michael Curtiz
-                  </li>
-                  <li><span class="font-bold">Duration:</span> 102 minutes</li>
-                </ul>
-              </div>
-            </div>
-          </article>
-          <article>
-            <h3 class="movie-title">Barbecue</h3>
-            <div class="movie-info">
-              <img
-                src="./images/barbecue.jpg"
-                alt="Movie thumbnail"
-                class="movie-thumbnail"
-              />
-              <div>
-                <ul>
-                  <li>
-                    <span class="font-bold">Cast:</span> Lwazi Dlaminilf, Rufo
-                    Servado, Katsunori Yashima
-                  </li>
-                  <li>
-                    <span class="font-bold">Director:</span> Matthew Salleh
-                  </li>
-                  <li><span class="font-bold">Duration:</span> 102 minutes</li>
-                </ul>
-              </div>
-            </div>
-          </article>
-          <article>
-            <h3 class="movie-title">Earth</h3>
-            <div class="movie-info">
-              <img
-                src="./images/nature.jpg"
-                alt="Movie thumbnail"
-                class="movie-thumbnail"
-              />
-              <div>
-                <ul>
-                  <li><span class="font-bold">Cast:</span> Patrick Stewart</li>
-                  <li>
-                    <span class="font-bold">Director:</span> Alastair Fothergill
-                  </li>
-                  <li><span class="font-bold">Duration:</span> 99 minutes</li>
-                </ul>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-      <section>
-        <h2 class="section-head">Upcoming</h2>
-        <div class="row-center">
-          <article>
-            <h3 class="movie-title">Big Buck Bunny</h3>
-            <div class="movie-info">
-              <img
-                src="./images/bigbuck.jpg"
-                alt="Movie thumbnail"
-                class="movie-thumbnail"
-              />
-              <div>
-                <ul>
-                  <li>Cast: Bunny</li>
-                  <li>Director: Sacha Goedegebure</li>
-                  <li>Duration: 10 minutes</li>
-                </ul>
-              </div>
-            </div>
-          </article>
-          <article>
-            <h3 class="movie-title">The Way Back to Yarasquin</h3>
-            <div class="movie-info">
-              <img
-                src="./images/mochi.jpg"
-                alt="Movie thumbnail"
-                class="movie-thumbnail"
-              />
-              <div>
-                <ul>
-                  <li>Cast: Mayra Orallana-Powell</li>
-                  <li>Director: Sarah Gerber</li>
-                  <li>Duration: 35 minutes</li>
-                </ul>
-              </div>
-            </div>
-          </article>
-          <article>
-            <h3 class="movie-title">Charlie and the Chocolate Factory</h3>
-            <div class="movie-info">
-              <img
-                src="./images/chocolate.jpg"
-                alt="Movie thumbnail"
-                class="movie-thumbnail"
-              />
-              <div>
-                <ul>
-                  <li>Cast: Johnny Depp, Freddie Highmore</li>
-                  <li>Director: Tim Burton</li>
-                  <li>Duration: 115 minutes</li>
-                </ul>
-              </div>
-            </div>
-          </article>
-          <article>
-            <h3 class="movie-title">Wild Horses</h3>
-            <div class="movie-info">
-              <img
-                src="./images/wildlife.jpg"
-                alt="Movie thumbnail"
-                class="movie-thumbnail"
-              />
-              <div>
-                <ul>
-                  <li>
-                    Cast: Mick Jagger, Brian Jones, Keith Richards, Bill Wyman
-                  </li>
-                  <li>Director: Jimmy Miller</li>
-                  <li>Duration: 46 minutes</li>
-                </ul>
-              </div>
-            </div>
-          </article>
-          <article>
-            <h3 class="movie-title">Mad Max: Fury Road</h3>
-            <div class="movie-info">
-              <img
-                src="./images/wonders.jpg"
-                alt="Movie thumbnail"
-                class="movie-thumbnail"
-              />
-              <div>
-                <ul>
-                  <li>Cast: Tom Hardy, Charlize Theron, Nicholas Hoult</li>
-                  <li>Director: George Miller</li>
-                  <li>Duration: 120 minutes</li>
-                </ul>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
+    <main id="main" class="flex-col-center">
     </main>
     <footer>
       <div>
@@ -222,5 +49,66 @@
         </ul>
       </div>
     </footer>
+    <script>
+      const DATA = getMovies()
+      const MAIN = document.getElementById("main")
+
+      function htmlToElement(html) {
+        let template = document.createElement("template")
+        template.innerHTML = html.trim()
+        return template.content.firstChild
+      }
+
+      function htmlToElements(html) {
+        let template = document.createElement('template')
+        template.innerHTML = html.trim()
+        return template.content.childNodes
+      }
+
+      ((movie) => {
+        const divHTML = 
+          `<div>
+            <video controls class="video-big">
+              <source src="${movie.sources.mp4}" type="video/mp4">
+              <source src="${movie.sources.mp4}" type="video/ogg">
+            </video>
+            <h1 class="casablanca-title">${movie.info.title}</h1>
+          </div>`
+        MAIN.insertAdjacentHTML('beforeend', divHTML)
+      })(DATA[0]);
+
+      (() => {
+        const section = (title, movies) => {
+          const moviesHTML = movies.map(
+            (movie) => 
+              `<article>
+                <h3 class="movie-title">${movie.info.title}</h3>
+                <div class="movie-info">
+                  <img src=".${movie.thumb}" alt="Movie thumbnail" class="movie-thumbnail">
+                  <div>
+                    <ul>
+                      <li><span class="font-bold">Cast:</span> ${movie.info.cast}</li>
+                      <li><span class="font-bold">Director:</span> ${movie.info.director}</li>
+                      <li><span class="font-bold">Duration:</span> ${movie.info.duration} minutes</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>`
+          ).join("\n")
+          const sectionHTML =
+            `<section>
+              <h2 class="section-head">${title}</h2>
+              <div class="row-center">
+                ${moviesHTML}
+              </div>
+            </section>`
+          MAIN.insertAdjacentHTML('beforeend', sectionHTML)
+        }
+        const nowShowingMovies = DATA.filter((movie) => movie.type === 'now')
+        const upcomingMovies = DATA.filter((movie) => movie.type === 'upcoming')
+        section('Now showing', nowShowingMovies)
+        section('Upcoming', upcomingMovies)
+      })()
+    </script>
   </body>
 </html>
