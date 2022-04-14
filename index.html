@@ -53,6 +53,14 @@
       const DATA = getMovies()
       const MAIN = document.getElementById("main")
 
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      function isPlaying(media) {
+        return !!(media.currentTime > 0 && !media.paused && !media.ended && media.readyState > 2);
+      }
+
       function htmlToElement(html) {
         let template = document.createElement("template")
         template.innerHTML = html.trim()
@@ -68,7 +76,7 @@
       ((movie) => {
         const divHTML = 
           `<div>
-            <video controls class="video-big">
+            <video controls class="video-big" muted="muted">
               <source src="${movie.sources.mp4}" type="video/mp4">
               <source src="${movie.sources.mp4}" type="video/ogg">
             </video>
@@ -84,7 +92,10 @@
               `<article>
                 <h3 class="movie-title">${movie.info.title}</h3>
                 <div class="movie-info">
-                  <img src=".${movie.thumb}" alt="Movie thumbnail" class="movie-thumbnail">
+                  <video poster=".${movie.thumb}" class="movie-thumbnail" muted="muted">
+                    <source src="${movie.sources.mp4}" type="video/mp4">
+                    <source src="${movie.sources.mp4}" type="video/ogg">
+                  </video>
                   <div>
                     <ul>
                       <li><span class="font-bold">Cast:</span> ${movie.info.cast}</li>
@@ -108,7 +119,36 @@
         const upcomingMovies = DATA.filter((movie) => movie.type === 'upcoming')
         section('Now showing', nowShowingMovies)
         section('Upcoming', upcomingMovies)
-      })()
+      })();
+
+      async function play() {
+        const videos = document.getElementsByTagName('video')
+        const len = videos.length
+        for (let i = 0; i < len; i++) {
+          videos[i].addEventListener('ended', (e) => 
+            setTimeout(
+              () => {
+                e.target.currentTime = 0
+                videos[(i+1) % len].play()
+              },
+              2000
+            )
+          )
+          videos[i].addEventListener('click', (e) => {
+            e.preventDefault()
+            if (isPlaying(e.target)) {
+              e.target.pause()
+              return
+            }
+            for (const v of videos) {
+              v.pause()
+            }
+            e.target.play()
+          })
+        }
+        videos[0].play()
+      }
+      play()
     </script>
   </body>
 </html>
