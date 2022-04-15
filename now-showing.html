@@ -11,6 +11,8 @@
     <link rel="stylesheet" media="screen" href="./styles/base.css" />
     <link rel="icon" type="image/svg" href="./images/icon.svg" />
     <link rel="stylesheet" href="./styles/now-showing.css" />
+    <script type="text/javascript" src="http://courses.cs.cityu.edu.hk/cs2204/cw3/cinemas.js"></script>
+    <script type="text/javascript" src="scripts/movies.js"></script>
   </head>
   <body>
     <header>
@@ -32,229 +34,7 @@
         </ul>
       </nav>
     </header>
-    <main class="flex-col-center">
-      <div class="flex-col-center gap-4">
-        <div>
-          <label for="cinema-select">Select a cinema</label>
-          <select id="cinema-select">
-            <option value="Admiralty">Kalos Admiralty</option>
-
-            <option value="Mong Kok">Kalos Mong Kok</option>
-
-            <option value="Tsim Sha Tsui">Kalos Tsim Sha Tsui</option>
-          </select>
-        </div>
-        <div class="row-center">
-          <form action="./ticket.html">
-            <fieldset class="flex-col-center">
-              <legend class="movie-title">Casablanca</legend>
-              <img
-                src="./images/casablanca.png"
-                alt="Movie thumbnail"
-                class="movie-thumbnail"
-              />
-              <input name="title" type="text" value="Casablanca" hidden />
-              <input name="cinema" type="text" value="Admiralty" hidden />
-              <label for="datetime-casablanca">Datetime</label>
-              <select name="datetime" id="datetime-casablanca">
-                <option value="2022-02-12T20:00:00">12 February — 20:00</option>
-
-                <option value="2022-02-13T15:00:00">13 February — 15:00</option>
-
-                <option value="2022-02-13T20:00:00">13 February — 20:00</option>
-
-                <option value="2022-02-14T20:00:00">14 February — 20:00</option>
-              </select>
-
-              <label for="house-casablanca">House</label>
-              <select name="house" id="house-casablanca">
-                <option value="1">House 1</option>
-
-                <option value="2">House 2</option>
-
-                <option value="3">House 3</option>
-              </select>
-              <button type="submit">Buy Ticket</button>
-            </fieldset>
-          </form>
-
-          <form action="./ticket.html">
-            <fieldset class="flex-col-center">
-              <legend class="movie-title">Earth</legend>
-              <img
-                src="./images/nature.jpg"
-                alt="Movie thumbnail"
-                class="movie-thumbnail"
-              />
-              <input name="title" type="text" value="Earth" hidden />
-              <input name="cinema" type="text" value="Admiralty" hidden />
-
-              <label for="datetime-nature">Datetime</label>
-              <select name="datetime" id="datetime-nature">
-                <option value="2022-02-12T20:00:00">12 February — 20:00</option>
-
-                <option value="2022-02-13T15:00:00">13 February — 15:00</option>
-
-                <option value="2022-02-13T20:00:00">13 February — 20:00</option>
-
-                <option value="2022-02-14T20:00:00">14 February — 20:00</option>
-              </select>
-
-              <label for="house-nature">House</label>
-              <select name="house" id="house-nature">
-                <option value="1">House 1</option>
-
-                <option value="2">House 2</option>
-
-                <option value="3">House 3</option>
-              </select>
-
-              <button type="submit">Buy Ticket</button>
-            </fieldset>
-          </form>
-
-          <form action="./ticket.html">
-            <fieldset class="flex-col-center">
-              <legend class="movie-title">The Way Back to Yarasquin</legend>
-              <img
-                src="./images/mochi.jpg"
-                alt="Movie thumbnail"
-                class="movie-thumbnail"
-              />
-              <input
-                name="title"
-                type="text"
-                value="The Way Back to Yarasquin"
-                hidden
-              />
-              <input name="cinema" type="text" value="Admiralty" hidden />
-              <label for="datetime-cakemaking">Datetime</label>
-              <select name="datetime" id="datetime-cakemaking">
-                <option value="2022-02-12T20:00:00">12 February — 20:00</option>
-
-                <option value="2022-02-13T15:00:00">13 February — 15:00</option>
-
-                <option value="2022-02-13T20:00:00">13 February — 20:00</option>
-
-                <option value="2022-02-14T20:00:00">14 February — 20:00</option>
-              </select>
-
-              <label for="house-cakemaking">House</label>
-              <select name="house" id="house-cakemaking">
-                <option value="1">House 1</option>
-
-                <option value="2">House 2</option>
-
-                <option value="3">House 3</option>
-              </select>
-              <button type="submit">Buy Ticket</button>
-            </fieldset>
-          </form>
-
-          <form action="./ticket.html">
-            <fieldset class="flex-col-center">
-              <legend class="movie-title">Wild Horses</legend>
-              <img
-                src="./images/wildlife.jpg"
-                alt="Movie thumbnail"
-                class="movie-thumbnail"
-              />
-              <input name="title" type="text" value="Wild Horses" hidden />
-              <input name="cinema" type="text" value="Admiralty" hidden />
-              <label for="datetime-wildlife">Datetime</label>
-              <select name="datetime" id="datetime-wildlife">
-                <option value="2022-02-12T20:00:00">12 February — 20:00</option>
-
-                <option value="2022-02-13T15:00:00">13 February — 15:00</option>
-
-                <option value="2022-02-13T20:00:00">13 February — 20:00</option>
-
-                <option value="2022-02-14T20:00:00">14 February — 20:00</option>
-              </select>
-
-              <label for="house-wildlife">House</label>
-              <select name="house" id="house-wildlife">
-                <option value="1">House 1</option>
-
-                <option value="2">House 2</option>
-
-                <option value="3">House 3</option>
-              </select>
-              <button type="submit">Buy Ticket</button>
-            </fieldset>
-          </form>
-
-          <form action="./ticket.html">
-            <fieldset class="flex-col-center">
-              <legend class="movie-title">Mad Max: Fury Road</legend>
-              <img
-                src="./images/wonders.jpg"
-                alt="Movie thumbnail"
-                class="movie-thumbnail"
-              />
-              <input
-                name="title"
-                type="text"
-                value="Mad Max: Fury Road"
-                hidden
-              />
-              <input name="cinema" type="text" value="Admiralty" hidden />
-              <label for="datetime-wonders">Datetime</label>
-              <select name="datetime" id="datetime-wonders">
-                <option value="2022-02-12T20:00:00">12 February — 20:00</option>
-
-                <option value="2022-02-13T15:00:00">13 February — 15:00</option>
-
-                <option value="2022-02-13T20:00:00">13 February — 20:00</option>
-
-                <option value="2022-02-14T20:00:00">14 February — 20:00</option>
-              </select>
-
-              <label for="house-wonders">House</label>
-              <select name="house" id="house-wonders">
-                <option value="1">House 1</option>
-
-                <option value="2">House 2</option>
-
-                <option value="3">House 3</option>
-              </select>
-              <button type="submit">Buy Ticket</button>
-            </fieldset>
-          </form>
-        </div>
-
-        <section>
-          <h2 class="section-head">Cinemas Locations</h2>
-          <div class="row-center">
-            <div class="cinema">
-              <p class="cinema-name">Kalos Admiralty</p>
-              <p>Address: 88 Queensway, Admiralty</p>
-              <img
-                src="./images/map_admiralty.png"
-                alt="Location of Kalos Admiralty"
-              />
-            </div>
-
-            <div class="cinema">
-              <p class="cinema-name">Kalos Mong Kok</p>
-              <p>Address: Langham Place, Shantung Street, Mong Kok</p>
-              <img
-                src="./images/map_mong_kok.png"
-                alt="Location of Kalos Mong Kok"
-              />
-            </div>
-
-            <div class="cinema">
-              <p class="cinema-name">Kalos Tsim Sha Tsui</p>
-              <p>Address: Cameron Street</p>
-              <img
-                src="./images/map_tsim_sha_tsui.png"
-                alt="Location of Kalos Tsim Sha Tsui"
-              />
-            </div>
-          </div>
-        </section>
-      </div>
+    <main id="main" class="flex-col-center">
     </main>
     <footer>
       <div>
@@ -270,5 +50,116 @@
         </ul>
       </div>
     </footer>
+    <script>
+      const MOVIES = getMovies()
+      const CINEMAS = getCinemas()
+      const CINEMAS_INFO = {
+        "City Cinema - Festival Walk": {
+          "address": "80 Tat Chee Ave, Kowloon Tong",
+          "map": "/images/map_admiralty.png" // lol
+        },
+        "City Cinema - Mong Kok": {
+          "address": "Langham Place, Shantung Street, Mong Kok",
+          "map": "/images/map_mong_kok.png"
+        },
+        "City Cinema - Central": {
+          "address": "Cameron Street",
+          "map": "/images/map_tsim_sha_tsui.png"
+        }
+      }
+      const MAIN = document.getElementById("main")
+
+      MAIN.innerHTML = `<div class="flex-col-center gap-4"></div>`;
+
+      const DIV = MAIN.firstChild;
+
+      (() => {
+        const selection = 
+          `<div>
+            <label for="cinema-select">Select a cinema:</label>
+            <select id="cinema-select">
+              ${CINEMAS.map(
+                (branch) => `<option value="${branch.branchName}">${branch.branchName}</option>`
+              ).join('')}
+            </select>
+          </div>`
+        DIV.insertAdjacentHTML('beforeend', selection);
+      })();
+
+      (() => {
+        const form = (m) => {
+          const movie = MOVIES.find(e => e.id === m.id)
+          const f = 
+            `<form action="./ticket.html">
+              <fieldset class="flex-col-center">
+                <legend class="movie-title">${movie.info.title}</legend>
+                <img src=".${movie.thumb}" alt="Movie thumbnail" class="movie-thumbnail">
+                <input name="title" type="hidden" value="${movie.info.title}">
+                <div>
+                  <label for="show-${movie.id}">Datetime:</label>
+                  <select name="show-index" id="show-${movie.id}">
+                    ${
+                      m.shows.map(
+                        (show) => `<option value="${show.index}">${show.datetime} [House ${show.house}]</option>`
+                      ).join('')
+                    }
+                  </select>
+                </div>
+                <button type="submit">Buy Ticket</button>
+              </fieldset>
+            </form>`
+          return f
+        }
+
+        const divs = CINEMAS.map(
+          (branch, i) =>
+            `<div
+              class="branch row-center"
+              id="${branch.branchName}"
+              ${i > 0 ? `style="display: none;"` : ""}
+            >
+              ${branch.movies.map((m) => form(m)).join('')}
+            </div>`
+        ).join('')
+
+        DIV.insertAdjacentHTML('beforeend', divs);
+      })();
+
+      (() => {
+        const section =
+          `<section>
+            <h2 class="section-head">Cinemas Locations</h2>
+            <div class="row-center">
+              ${
+                CINEMAS.map(
+                  (branch) => {
+                    const name = branch.branchName
+                    const info =
+                      `<div class="cinema">
+                        <p class="cinema-name">${name}</p>
+                        <p>Address: ${CINEMAS_INFO[name].address}</p>
+                        <img src=".${CINEMAS_INFO[name].map}" alt="Location of ${name}">
+                      </div>`
+                    return info
+                  }
+                ).join('')
+              }
+            </div>
+          </section>`
+        
+        DIV.insertAdjacentHTML('beforeend', section);
+      })();
+
+      (() => {
+        const select = document.getElementById('cinema-select');
+        const branches = document.getElementsByClassName('branch');
+        select.addEventListener('change', (e) => {
+          for (const branch of branches) {
+            branch.style.display = 'none';
+          }
+          document.getElementById(e.target.value).style = '';
+        })
+      })();
+    </script>
   </body>
 </html>

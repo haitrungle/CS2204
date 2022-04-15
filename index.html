@@ -50,7 +50,7 @@
       </div>
     </footer>
     <script>
-      const DATA = getMovies()
+      const MOVIES = getMovies()
       const MAIN = document.getElementById("main")
 
       function sleep(ms) {
@@ -83,7 +83,7 @@
             <h1 class="casablanca-title">${movie.info.title}</h1>
           </div>`
         MAIN.insertAdjacentHTML('beforeend', divHTML)
-      })(DATA[0]);
+      })(MOVIES[0]);
 
       (() => {
         const section = (title, movies) => {
@@ -105,7 +105,7 @@
                   </div>
                 </div>
               </article>`
-          ).join("\n")
+          ).join('')
           const sectionHTML =
             `<section>
               <h2 class="section-head">${title}</h2>
@@ -115,13 +115,13 @@
             </section>`
           MAIN.insertAdjacentHTML('beforeend', sectionHTML)
         }
-        const nowShowingMovies = DATA.filter((movie) => movie.type === 'now')
-        const upcomingMovies = DATA.filter((movie) => movie.type === 'upcoming')
+        const nowShowingMovies = MOVIES.filter((movie) => movie.type === 'now')
+        const upcomingMovies = MOVIES.filter((movie) => movie.type === 'upcoming')
         section('Now showing', nowShowingMovies)
         section('Upcoming', upcomingMovies)
       })();
 
-      async function play() {
+      (async () => {
         const videos = document.getElementsByTagName('video')
         const len = videos.length
         for (let i = 0; i < len; i++) {
@@ -147,8 +147,7 @@
           })
         }
         videos[0].play()
-      }
-      play()
+      })();
     </script>
   </body>
 </html>
