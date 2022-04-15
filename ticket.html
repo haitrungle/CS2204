@@ -11,6 +11,8 @@
     <link rel="stylesheet" media="screen" href="./styles/base.css" />
     <link rel="icon" type="image/svg" href="./images/icon.svg" />
     <link rel="stylesheet" href="./styles/ticket.css" />
+    <script type="text/javascript" src="http://courses.cs.cityu.edu.hk/cs2204/cw3/cinemas.js"></script>
+    <script type="text/javascript" src="scripts/movies.js"></script>
   </head>
   <body>
     <header>
@@ -35,105 +37,19 @@
     <main class="flex-col-center">
       <div class="flex-col-center gap-4">
         <div class="row-center">
-          <div class="info">
-            <p>Cinema: Kalos Admiralty</p>
-            <p>Movie: Casablanca</p>
-            <p>Time: 12 February — 20:00</p>
-            <p>House 3</p>
-          </div>
-          <div>
-            <table>
-              <thead>
-                <tr>
-                  <th colspan="5">SCREEN</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Row A</td>
-
-                  <td class="seat">1</td>
-
-                  <td class="seat">2</td>
-
-                  <td class="seat">3</td>
-
-                  <td class="seat">4</td>
-                </tr>
-
-                <tr>
-                  <td>Row B</td>
-
-                  <td class="seat">1</td>
-
-                  <td class="seat">2</td>
-
-                  <td class="seat">3</td>
-
-                  <td class="seat">4</td>
-                </tr>
-
-                <tr>
-                  <td>Row C</td>
-
-                  <td class="seat">1</td>
-
-                  <td class="seat">2</td>
-
-                  <td class="seat">3</td>
-
-                  <td class="seat">4</td>
-                </tr>
-
-                <tr>
-                  <td>Row D</td>
-
-                  <td class="seat">1</td>
-
-                  <td class="seat">2</td>
-
-                  <td class="seat">3</td>
-
-                  <td class="seat">4</td>
-                </tr>
-
-                <tr>
-                  <td>Row E</td>
-
-                  <td class="seat">1</td>
-
-                  <td class="seat">2</td>
-
-                  <td class="seat">3</td>
-
-                  <td class="seat">4</td>
-                </tr>
-
-                <tr>
-                  <td>Row F</td>
-
-                  <td class="seat">1</td>
-
-                  <td class="seat">2</td>
-
-                  <td class="seat">3</td>
-
-                  <td class="seat">4</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <div class="info" id="show-info"></div>
+          <div id="seat-plan"></div>
           <div class="info">
             <form id="print" action="./print.html">
               <div>
-                <label for="seats">Seats selected:</label>
-                <input
+                <label for="seats">Seats booked:</label>
+                <textarea
                   id="seats"
                   name="seats"
-                  type="text"
-                  value="D1, D2"
+                  rows="10"
                   readonly
-                />
+                >
+                </textarea>
               </div>
             </form>
           </div>
@@ -157,5 +73,96 @@
         </ul>
       </div>
     </footer>
+    <script>
+      const MOVIES = getMovies()
+      const CINEMAS = getCinemas()
+
+      const PARAMS = new URLSearchParams(document.location.search);
+
+      const INPUT_SEATS = document.getElementById('seats');
+      const DATA = {
+        title: PARAMS.get('title'),
+        cinema: '',
+        datetime: '',
+        house: 0,
+        seats: []
+      };
+
+      (() => {
+        const index = parseInt(PARAMS.get('show-index'));
+        outer:
+        for (const branch of CINEMAS) {
+          for (const movie of branch.movies) {
+            const show = movie.shows.find((e) => e.index === index);
+            if (show) {
+              DATA.cinema = branch.branchName;
+              DATA.datetime = show.datetime;
+              DATA.house = show.house;
+              break outer;
+            }
+          }
+        }
+        const info =
+          `
+            <p><label for="cinema" class="font-bold">Cinema:</label> <input name="cinema" id="cinema" form="print" type="text" value="${DATA.cinema}" size="24" readonly /></p>
+            <p><label for="title" class="font-bold">Movie:</label> <input name="title" id="title" form="print" type="text" value="${DATA.title}" readonly /></p>
+            <p><label for="datetime" class="font-bold">Time:</label> <input name="datetime" id="datetime" form="print" type="text" value="${DATA.datetime}" readonly /></p>
+            <p><label for="house" class="font-bold">House</label> <input name="house" id="house" form="print" type="text" value="${DATA.house}" size="1" readonly /></p>
+          `;
+        document.getElementById('show-info').insertAdjacentHTML('beforeend', info);
+      })();
+
+      (() => {
+        const width = 7;
+        const height = 5;
+
+        const rows = [...Array(height)].map((_, i) => String.fromCharCode(i + 65));
+        const columns = [...Array(width)].map((_, i) => i+1);
+
+        const table =
+          `<table>
+            <thead>
+              <tr>
+                <th colspan="${width+1}">SCREEN</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${
+                rows.map((r) => 
+                  `<tr>
+                    <td>Row ${r}</td>
+                    ${
+                      columns.map((c) =>
+                        `<td class="seat" data-seat-id="${r}${c}" data-booked="false">${c}</td>`
+                      ).join('')
+                    }
+                  </tr>`
+                ).join('')
+              }
+            </tbody>
+          </table>`
+
+        document.getElementById('seat-plan').insertAdjacentHTML('beforeend', table);
+      })();
+
+      (() => {
+        function addSeat(id) {
+          DATA.seats.push(id);
+          INPUT_SEATS.value = DATA.seats.join(', ');
+        }
+
+        const seats = document.getElementsByClassName('seat');
+        for (const seat of seats) {
+          seat.addEventListener('click', (e) => {
+            const td = e.target;
+            td.style.backgroundColor = '#f3f4f6';
+            td.style.pointerEvents = 'none';
+            if (td.dataset.booked === 'false') {
+              addSeat(td.dataset.seatId);
+            }
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

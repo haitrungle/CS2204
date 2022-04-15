@@ -5,7 +5,11 @@
 }
 
 .info {
-  width: 12rem;
+  width: 14rem;
+}
+
+input {
+  background-color: white;
 }
 
 tr {
