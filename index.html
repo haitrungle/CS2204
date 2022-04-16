@@ -53,27 +53,12 @@
       const MOVIES = getMovies()
       const MAIN = document.getElementById("main")
 
-      function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-      }
-
       function isPlaying(media) {
         return !!(media.currentTime > 0 && !media.paused && !media.ended && media.readyState > 2);
       }
 
-      function htmlToElement(html) {
-        let template = document.createElement("template")
-        template.innerHTML = html.trim()
-        return template.content.firstChild
-      }
-
-      function htmlToElements(html) {
-        let template = document.createElement('template')
-        template.innerHTML = html.trim()
-        return template.content.childNodes
-      }
-
-      ((movie) => {
+      BigVideo: {
+        const movie = MOVIES[0];
         const divHTML = 
           `<div>
             <video controls class="video-big" muted="muted">
@@ -81,11 +66,11 @@
               <source src="${movie.sources.mp4}" type="video/ogg">
             </video>
             <h1 class="casablanca-title">${movie.info.title}</h1>
-          </div>`
-        MAIN.insertAdjacentHTML('beforeend', divHTML)
-      })(MOVIES[0]);
+          </div>`;
+        MAIN.insertAdjacentHTML('beforeend', divHTML);
+      }
 
-      (() => {
+      MovieListing: {
         const section = (title, movies) => {
           const moviesHTML = movies.map(
             (movie) => 
@@ -119,9 +104,9 @@
         const upcomingMovies = MOVIES.filter((movie) => movie.type === 'upcoming')
         section('Now showing', nowShowingMovies)
         section('Upcoming', upcomingMovies)
-      })();
+      }
 
-      (async () => {
+      EventListeners: {
         const videos = document.getElementsByTagName('video')
         const len = videos.length
         for (let i = 0; i < len; i++) {
@@ -147,7 +132,7 @@
           })
         }
         videos[0].play()
-      })();
+      }
     </script>
   </body>
 </html>
