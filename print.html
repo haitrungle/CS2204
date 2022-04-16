@@ -48,7 +48,7 @@
       </div>
     </footer>
     <script>
-      const MAIN = document.getElementById('main');
+      const MAIN = document.getElementById("main");
       const PARAMS = new URLSearchParams(document.location.search);
 
       function ticket(cinema, title, datetime, house, seat) {
@@ -58,30 +58,33 @@
           <p><span class="font-bold">Time:</span> ${datetime}</p>
           <p><span class="font-bold">House:</span> ${house}</p>
           <p><span class="font-bold">Seat:</span> ${seat}</p>
-        </div>`
+        </div>`;
       }
 
       (() => {
-        const cinema = PARAMS.get('cinema');
-        const title = PARAMS.get('title');
-        const datetime = PARAMS.get('datetime');
-        const house = parseInt(PARAMS.get('house'));
-        const seats = PARAMS.get('seats').split(', ');
+        const cinema = PARAMS.get("cinema");
+        const title = PARAMS.get("title");
+        const datetime = PARAMS.get("datetime");
+        const house = parseInt(PARAMS.get("house"));
+        const seats = PARAMS.get("seats").split(", ");
 
-        const tickets = seats.map((s, i) => 
-          `
-          <div class="ticket">
-            <p><span class="font-bold">Cinema:</span> ${cinema}</p>
-            <p><span class="font-bold">Movie:</span> ${title}</p>
-            <p><span class="font-bold">Time:</span> ${datetime}</p>
-            <p><span class="font-bold">House:</span> ${house}</p>
-            <p><span class="font-bold">Seat:</span> ${s}</p>
-          </div>
-          ${i < seats.length-1 ? `<div class="pb"></div>` : ''}
-          `
-        ).join('')
+        const tickets = seats
+          .map(
+            (s, i) =>
+              `
+              <div class="ticket">
+                <p><span class="font-bold">Cinema:</span> ${cinema}</p>
+                <p><span class="font-bold">Movie:</span> ${title}</p>
+                <p><span class="font-bold">Time:</span> ${datetime}</p>
+                <p><span class="font-bold">House:</span> ${house}</p>
+                <p><span class="font-bold">Seat:</span> ${s}</p>
+              </div>
+              ${i < seats.length - 1 ? `<div class="pb"></div>` : ""}
+              `
+          )
+          .join("");
 
-        MAIN.insertAdjacentHTML('beforeend', tickets);
+        MAIN.insertAdjacentHTML("beforeend", tickets);
       })();
     </script>
   </body>

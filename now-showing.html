@@ -11,7 +11,10 @@
     <link rel="stylesheet" media="screen" href="./styles/base.css" />
     <link rel="icon" type="image/svg" href="./images/icon.svg" />
     <link rel="stylesheet" href="./styles/now-showing.css" />
-    <script type="text/javascript" src="http://courses.cs.cityu.edu.hk/cs2204/cw3/cinemas.js"></script>
+    <script
+      type="text/javascript"
+      src="http://courses.cs.cityu.edu.hk/cs2204/cw3/cinemas.js"
+    ></script>
     <script type="text/javascript" src="scripts/movies.js"></script>
   </head>
   <body>
@@ -34,8 +37,7 @@
         </ul>
       </nav>
     </header>
-    <main id="main" class="flex-col-center">
-    </main>
+    <main id="main" class="flex-col-center"></main>
     <footer>
       <div>
         <p>
@@ -51,65 +53,67 @@
       </div>
     </footer>
     <script>
-      const MOVIES = getMovies()
-      const CINEMAS = getCinemas()
+      const MOVIES = getMovies();
+      const CINEMAS = getCinemas();
       const CINEMAS_INFO = {
         "City Cinema - Festival Walk": {
-          "address": "80 Tat Chee Ave, Kowloon Tong",
-          "map": "/images/map_admiralty.png" // lol
+          address: "80 Tat Chee Ave, Kowloon Tong",
+          map: "/images/map_admiralty.png", // lol
         },
         "City Cinema - Mong Kok": {
-          "address": "Langham Place, Shantung Street, Mong Kok",
-          "map": "/images/map_mong_kok.png"
+          address: "Langham Place, Shantung Street, Mong Kok",
+          map: "/images/map_mong_kok.png",
         },
         "City Cinema - Central": {
-          "address": "Cameron Street",
-          "map": "/images/map_tsim_sha_tsui.png"
-        }
-      }
-      const MAIN = document.getElementById("main")
+          address: "Cameron Street",
+          map: "/images/map_tsim_sha_tsui.png",
+        },
+      };
+      const MAIN = document.getElementById("main");
 
       MAIN.innerHTML = `<div class="flex-col-center gap-4"></div>`;
 
       const DIV = MAIN.firstChild;
 
       (() => {
-        const selection = 
-          `<div>
+        const selection = `<div>
             <label for="cinema-select">Select a cinema:</label>
             <select id="cinema-select">
               ${CINEMAS.map(
-                (branch) => `<option value="${branch.branchName}">${branch.branchName}</option>`
-              ).join('')}
+                (branch) =>
+                  `<option value="${branch.branchName}">${branch.branchName}</option>`
+              ).join("")}
             </select>
-          </div>`
-        DIV.insertAdjacentHTML('beforeend', selection);
+          </div>`;
+        DIV.insertAdjacentHTML("beforeend", selection);
       })();
 
       (() => {
         const form = (m) => {
-          const movie = MOVIES.find(e => e.id === m.id)
-          const f = 
-            `<form action="./ticket.html">
+          const movie = MOVIES.find((e) => e.id === m.id);
+          const f = `<form action="./ticket.html">
               <fieldset class="flex-col-center">
                 <legend class="movie-title">${movie.info.title}</legend>
-                <img src=".${movie.thumb}" alt="Movie thumbnail" class="movie-thumbnail">
+                <img src=".${
+                  movie.thumb
+                }" alt="Movie thumbnail" class="movie-thumbnail">
                 <input name="title" type="hidden" value="${movie.info.title}">
                 <div>
                   <label for="show-${movie.id}">Datetime:</label>
                   <select name="show-index" id="show-${movie.id}">
-                    ${
-                      m.shows.map(
-                        (show) => `<option value="${show.index}">${show.datetime} [House ${show.house}]</option>`
-                      ).join('')
-                    }
+                    ${m.shows
+                      .map(
+                        (show) =>
+                          `<option value="${show.index}">${show.datetime} [House ${show.house}]</option>`
+                      )
+                      .join("")}
                   </select>
                 </div>
                 <button type="submit">Buy Ticket</button>
               </fieldset>
-            </form>`
-          return f
-        }
+            </form>`;
+          return f;
+        };
 
         const divs = CINEMAS.map(
           (branch, i) =>
@@ -118,47 +122,41 @@
               id="${branch.branchName}"
               ${i > 0 ? `style="display: none;"` : ""}
             >
-              ${branch.movies.map((m) => form(m)).join('')}
+              ${branch.movies.map((m) => form(m)).join("")}
             </div>`
-        ).join('')
+        ).join("");
 
-        DIV.insertAdjacentHTML('beforeend', divs);
+        DIV.insertAdjacentHTML("beforeend", divs);
       })();
 
       (() => {
-        const section =
-          `<section>
+        const section = `<section>
             <h2 class="section-head">Cinemas Locations</h2>
             <div class="row-center">
-              ${
-                CINEMAS.map(
-                  (branch) => {
-                    const name = branch.branchName
-                    const info =
-                      `<div class="cinema">
+              ${CINEMAS.map((branch) => {
+                const name = branch.branchName;
+                const info = `<div class="cinema">
                         <p class="cinema-name">${name}</p>
                         <p>Address: ${CINEMAS_INFO[name].address}</p>
                         <img src=".${CINEMAS_INFO[name].map}" alt="Location of ${name}">
-                      </div>`
-                    return info
-                  }
-                ).join('')
-              }
+                      </div>`;
+                return info;
+              }).join("")}
             </div>
-          </section>`
-        
-        DIV.insertAdjacentHTML('beforeend', section);
+          </section>`;
+
+        DIV.insertAdjacentHTML("beforeend", section);
       })();
 
       (() => {
-        const select = document.getElementById('cinema-select');
-        const branches = document.getElementsByClassName('branch');
-        select.addEventListener('change', (e) => {
+        const select = document.getElementById("cinema-select");
+        const branches = document.getElementsByClassName("branch");
+        select.addEventListener("change", (e) => {
           for (const branch of branches) {
-            branch.style.display = 'none';
+            branch.style.display = "none";
           }
-          document.getElementById(e.target.value).style = '';
-        })
+          document.getElementById(e.target.value).style = "";
+        });
       })();
     </script>
   </body>

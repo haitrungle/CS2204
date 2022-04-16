@@ -33,8 +33,7 @@
         </ul>
       </nav>
     </header>
-    <main id="main" class="flex-col-center">
-    </main>
+    <main id="main" class="flex-col-center"></main>
     <footer>
       <div>
         <p>
@@ -50,31 +49,36 @@
       </div>
     </footer>
     <script>
-      const MOVIES = getMovies()
-      const MAIN = document.getElementById("main")
+      const MOVIES = getMovies();
+      const MAIN = document.getElementById("main");
 
       function isPlaying(media) {
-        return !!(media.currentTime > 0 && !media.paused && !media.ended && media.readyState > 2);
+        return !!(
+          media.currentTime > 0 &&
+          !media.paused &&
+          !media.ended &&
+          media.readyState > 2
+        );
       }
 
       BigVideo: {
         const movie = MOVIES[0];
-        const divHTML = 
-          `<div>
+        const divHTML = `<div>
             <video controls class="video-big" muted="muted">
               <source src="${movie.sources.mp4}" type="video/mp4">
               <source src="${movie.sources.mp4}" type="video/ogg">
             </video>
             <h1 class="casablanca-title">${movie.info.title}</h1>
           </div>`;
-        MAIN.insertAdjacentHTML('beforeend', divHTML);
+        MAIN.insertAdjacentHTML("beforeend", divHTML);
       }
 
       MovieListing: {
         const section = (title, movies) => {
-          const moviesHTML = movies.map(
-            (movie) => 
-              `<article>
+          const moviesHTML = movies
+            .map(
+              (movie) =>
+                `<article>
                 <h3 class="movie-title">${movie.info.title}</h3>
                 <div class="movie-info">
                   <video poster=".${movie.thumb}" class="movie-thumbnail" muted="muted">
@@ -90,48 +94,47 @@
                   </div>
                 </div>
               </article>`
-          ).join('')
-          const sectionHTML =
-            `<section>
+            )
+            .join("");
+          const sectionHTML = `<section>
               <h2 class="section-head">${title}</h2>
               <div class="row-center">
                 ${moviesHTML}
               </div>
-            </section>`
-          MAIN.insertAdjacentHTML('beforeend', sectionHTML)
-        }
-        const nowShowingMovies = MOVIES.filter((movie) => movie.type === 'now')
-        const upcomingMovies = MOVIES.filter((movie) => movie.type === 'upcoming')
-        section('Now showing', nowShowingMovies)
-        section('Upcoming', upcomingMovies)
+            </section>`;
+          MAIN.insertAdjacentHTML("beforeend", sectionHTML);
+        };
+        const nowShowingMovies = MOVIES.filter((movie) => movie.type === "now");
+        const upcomingMovies = MOVIES.filter(
+          (movie) => movie.type === "upcoming"
+        );
+        section("Now showing", nowShowingMovies);
+        section("Upcoming", upcomingMovies);
       }
 
       EventListeners: {
-        const videos = document.getElementsByTagName('video')
-        const len = videos.length
+        const videos = document.getElementsByTagName("video");
+        const len = videos.length;
         for (let i = 0; i < len; i++) {
-          videos[i].addEventListener('ended', (e) => 
-            setTimeout(
-              () => {
-                e.target.currentTime = 0
-                videos[(i+1) % len].play()
-              },
-              2000
-            )
-          )
-          videos[i].addEventListener('click', (e) => {
-            e.preventDefault()
+          videos[i].addEventListener("ended", (e) =>
+            setTimeout(() => {
+              e.target.currentTime = 0;
+              videos[(i + 1) % len].play();
+            }, 2000)
+          );
+          videos[i].addEventListener("click", (e) => {
+            e.preventDefault();
             if (isPlaying(e.target)) {
-              e.target.pause()
-              return
+              e.target.pause();
+              return;
             }
             for (const v of videos) {
-              v.pause()
+              v.pause();
             }
-            e.target.play()
-          })
+            e.target.play();
+          });
         }
-        videos[0].play()
+        videos[0].play();
       }
     </script>
   </body>

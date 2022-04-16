@@ -11,7 +11,10 @@
     <link rel="stylesheet" media="screen" href="./styles/base.css" />
     <link rel="icon" type="image/svg" href="./images/icon.svg" />
     <link rel="stylesheet" href="./styles/ticket.css" />
-    <script type="text/javascript" src="http://courses.cs.cityu.edu.hk/cs2204/cw3/cinemas.js"></script>
+    <script
+      type="text/javascript"
+      src="http://courses.cs.cityu.edu.hk/cs2204/cw3/cinemas.js"
+    ></script>
     <script type="text/javascript" src="scripts/movies.js"></script>
   </head>
   <body>
@@ -43,12 +46,7 @@
             <form id="print" action="./print.html">
               <div>
                 <label for="seats">Seats booked:</label>
-                <textarea
-                  id="seats"
-                  name="seats"
-                  rows="10"
-                  readonly
-                >
+                <textarea id="seats" name="seats" rows="10" readonly>
                 </textarea>
               </div>
             </form>
@@ -74,24 +72,23 @@
       </div>
     </footer>
     <script>
-      const MOVIES = getMovies()
-      const CINEMAS = getCinemas()
+      const MOVIES = getMovies();
+      const CINEMAS = getCinemas();
 
       const PARAMS = new URLSearchParams(document.location.search);
 
-      const INPUT_SEATS = document.getElementById('seats');
+      const INPUT_SEATS = document.getElementById("seats");
       const DATA = {
-        title: PARAMS.get('title'),
-        cinema: '',
-        datetime: '',
+        title: PARAMS.get("title"),
+        cinema: "",
+        datetime: "",
         house: 0,
-        seats: []
+        seats: [],
       };
 
       (() => {
-        const index = parseInt(PARAMS.get('show-index'));
-        outer:
-        for (const branch of CINEMAS) {
+        const index = parseInt(PARAMS.get("show-index"));
+        outer: for (const branch of CINEMAS) {
           for (const movie of branch.movies) {
             const show = movie.shows.find((e) => e.index === index);
             if (show) {
@@ -102,62 +99,65 @@
             }
           }
         }
-        const info =
-          `
+        const info = `
             <p><label for="cinema" class="font-bold">Cinema:</label> <input name="cinema" id="cinema" form="print" type="text" value="${DATA.cinema}" size="24" readonly /></p>
             <p><label for="title" class="font-bold">Movie:</label> <input name="title" id="title" form="print" type="text" value="${DATA.title}" readonly /></p>
             <p><label for="datetime" class="font-bold">Time:</label> <input name="datetime" id="datetime" form="print" type="text" value="${DATA.datetime}" readonly /></p>
             <p><label for="house" class="font-bold">House</label> <input name="house" id="house" form="print" type="text" value="${DATA.house}" size="1" readonly /></p>
           `;
-        document.getElementById('show-info').insertAdjacentHTML('beforeend', info);
+        document
+          .getElementById("show-info")
+          .insertAdjacentHTML("beforeend", info);
       })();
 
       (() => {
         const width = 7;
         const height = 5;
 
-        const rows = [...Array(height)].map((_, i) => String.fromCharCode(i + 65));
-        const columns = [...Array(width)].map((_, i) => i+1);
+        const rows = [...Array(height)].map((_, i) =>
+          String.fromCharCode(i + 65)
+        );
+        const columns = [...Array(width)].map((_, i) => i + 1);
 
-        const table =
-          `<table>
+        const table = `<table>
             <thead>
               <tr>
-                <th colspan="${width+1}">SCREEN</th>
+                <th colspan="${width + 1}">SCREEN</th>
               </tr>
             </thead>
             <tbody>
-              ${
-                rows.map((r) => 
-                  `<tr>
+              ${rows
+                .map(
+                  (r) =>
+                    `<tr>
                     <td>Row ${r}</td>
-                    ${
-                      columns.map((c) =>
-                        `<td class="seat" data-seat-id="${r}${c}" data-booked="false">${c}</td>`
-                      ).join('')
-                    }
-                  </tr>`
-                ).join('')
-              }
+                      ${columns.map(
+                          (c) => `<td class="seat" data-seat-id="${r}${c}" data-booked="false">${c}</td>`
+                        ).join("")}
+                    </tr>`
+                )
+                .join("")}
             </tbody>
-          </table>`
+          </table>`;
 
-        document.getElementById('seat-plan').insertAdjacentHTML('beforeend', table);
+        document
+          .getElementById("seat-plan")
+          .insertAdjacentHTML("beforeend", table);
       })();
 
       (() => {
         function addSeat(id) {
           DATA.seats.push(id);
-          INPUT_SEATS.value = DATA.seats.join(', ');
+          INPUT_SEATS.value = DATA.seats.join(", ");
         }
 
-        const seats = document.getElementsByClassName('seat');
+        const seats = document.getElementsByClassName("seat");
         for (const seat of seats) {
-          seat.addEventListener('click', (e) => {
+          seat.addEventListener("click", (e) => {
             const td = e.target;
-            td.style.backgroundColor = '#f3f4f6';
-            td.style.pointerEvents = 'none';
-            if (td.dataset.booked === 'false') {
+            td.style.backgroundColor = "#f3f4f6";
+            td.style.pointerEvents = "none";
+            if (td.dataset.booked === "false") {
               addSeat(td.dataset.seatId);
             }
           });
