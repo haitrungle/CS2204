@@ -32,23 +32,7 @@
         </ul>
       </nav>
     </header>
-    <main class="flex-col-center">
-      <div class="ticket">
-        <p><span class="font-bold">Cinema:</span> Kalos Admiralty</p>
-        <p><span class="font-bold">Movie:</span> Casablanca</p>
-        <p><span class="font-bold">Time:</span> 12 February — 20:00</p>
-        <p><span class="font-bold">House:</span> 3</p>
-        <p><span class="font-bold">Seat:</span> D1</p>
-      </div>
-      <div class="pb"></div>
-      <div class="ticket">
-        <p><span class="font-bold">Cinema:</span> Kalos Admiralty</p>
-        <p><span class="font-bold">Movie:</span> Casablanca</p>
-        <p><span class="font-bold">Time:</span> 12 February — 20:00</p>
-        <p><span class="font-bold">House:</span> 3</p>
-        <p><span class="font-bold">Seat:</span> D2</p>
-      </div>
-    </main>
+    <main id="main" class="flex-col-center"></main>
     <footer>
       <div>
         <p>
@@ -63,5 +47,42 @@
         </ul>
       </div>
     </footer>
+    <script>
+      const MAIN = document.getElementById('main');
+      const PARAMS = new URLSearchParams(document.location.search);
+
+      function ticket(cinema, title, datetime, house, seat) {
+        return `<div class="ticket">
+          <p><span class="font-bold">Cinema:</span> ${cinema}</p>
+          <p><span class="font-bold">Movie:</span> ${title}</p>
+          <p><span class="font-bold">Time:</span> ${datetime}</p>
+          <p><span class="font-bold">House:</span> ${house}</p>
+          <p><span class="font-bold">Seat:</span> ${seat}</p>
+        </div>`
+      }
+
+      (() => {
+        const cinema = PARAMS.get('cinema');
+        const title = PARAMS.get('title');
+        const datetime = PARAMS.get('datetime');
+        const house = parseInt(PARAMS.get('house'));
+        const seats = PARAMS.get('seats').split(', ');
+
+        const tickets = seats.map((s, i) => 
+          `
+          <div class="ticket">
+            <p><span class="font-bold">Cinema:</span> ${cinema}</p>
+            <p><span class="font-bold">Movie:</span> ${title}</p>
+            <p><span class="font-bold">Time:</span> ${datetime}</p>
+            <p><span class="font-bold">House:</span> ${house}</p>
+            <p><span class="font-bold">Seat:</span> ${s}</p>
+          </div>
+          ${i < seats.length-1 ? `<div class="pb"></div>` : ''}
+          `
+        ).join('')
+
+        MAIN.insertAdjacentHTML('beforeend', tickets);
+      })();
+    </script>
   </body>
 </html>
