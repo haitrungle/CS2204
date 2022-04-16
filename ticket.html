@@ -86,7 +86,7 @@
         seats: [],
       };
 
-      (() => {
+      ShowInfo: {
         const index = parseInt(PARAMS.get("show-index"));
         outer: for (const branch of CINEMAS) {
           for (const movie of branch.movies) {
@@ -108,9 +108,9 @@
         document
           .getElementById("show-info")
           .insertAdjacentHTML("beforeend", info);
-      })();
+      }
 
-      (() => {
+      SeatPlan: {
         const width = 7;
         const height = 5;
 
@@ -118,6 +118,16 @@
           String.fromCharCode(i + 65)
         );
         const columns = [...Array(width)].map((_, i) => i + 1);
+
+        function onClickSeat(e) {
+          const td = e.target;
+          td.style.backgroundColor = "#f3f4f6";
+          td.style.pointerEvents = "none";
+          if (td.dataset.booked === "false") {
+            DATA.seats.push(td.dataset.seatId);
+            INPUT_SEATS.value = DATA.seats.join(", ");
+          }
+        }
 
         const table = `<table>
             <thead>
@@ -132,7 +142,7 @@
                     `<tr>
                     <td>Row ${r}</td>
                       ${columns.map(
-                          (c) => `<td class="seat" data-seat-id="${r}${c}" data-booked="false">${c}</td>`
+                          (c) => `<td class="seat" onclick="onClickSeat(event)" data-seat-id="${r}${c}" data-booked="false">${c}</td>`
                         ).join("")}
                     </tr>`
                 )
@@ -143,26 +153,7 @@
         document
           .getElementById("seat-plan")
           .insertAdjacentHTML("beforeend", table);
-      })();
-
-      (() => {
-        function addSeat(id) {
-          DATA.seats.push(id);
-          INPUT_SEATS.value = DATA.seats.join(", ");
-        }
-
-        const seats = document.getElementsByClassName("seat");
-        for (const seat of seats) {
-          seat.addEventListener("click", (e) => {
-            const td = e.target;
-            td.style.backgroundColor = "#f3f4f6";
-            td.style.pointerEvents = "none";
-            if (td.dataset.booked === "false") {
-              addSeat(td.dataset.seatId);
-            }
-          });
-        }
-      })();
+      }
     </script>
   </body>
 </html>

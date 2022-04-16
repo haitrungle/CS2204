@@ -70,12 +70,10 @@
         },
       };
       const MAIN = document.getElementById("main");
-
       MAIN.innerHTML = `<div class="flex-col-center gap-4"></div>`;
-
       const DIV = MAIN.firstChild;
 
-      (() => {
+      SelectCinema: {
         const selection = `<div>
             <label for="cinema-select">Select a cinema:</label>
             <select id="cinema-select">
@@ -86,9 +84,9 @@
             </select>
           </div>`;
         DIV.insertAdjacentHTML("beforeend", selection);
-      })();
+      }
 
-      (() => {
+      Form: {
         const form = (m) => {
           const movie = MOVIES.find((e) => e.id === m.id);
           const f = `<form action="./ticket.html">
@@ -127,9 +125,20 @@
         ).join("");
 
         DIV.insertAdjacentHTML("beforeend", divs);
-      })();
+      }
 
-      (() => {
+      SelectChange: {
+        const select = document.getElementById("cinema-select");
+        const branches = document.getElementsByClassName("branch");
+        select.addEventListener("change", (e) => {
+          for (const branch of branches) {
+            branch.style.display = "none";
+          }
+          document.getElementById(e.target.value).style = "";
+        });
+      }
+
+      CinemasInfo: {
         const section = `<section>
             <h2 class="section-head">Cinemas Locations</h2>
             <div class="row-center">
@@ -146,18 +155,7 @@
           </section>`;
 
         DIV.insertAdjacentHTML("beforeend", section);
-      })();
-
-      (() => {
-        const select = document.getElementById("cinema-select");
-        const branches = document.getElementsByClassName("branch");
-        select.addEventListener("change", (e) => {
-          for (const branch of branches) {
-            branch.style.display = "none";
-          }
-          document.getElementById(e.target.value).style = "";
-        });
-      })();
+      }
     </script>
   </body>
 </html>

@@ -61,7 +61,7 @@
         </div>`;
       }
 
-      (() => {
+      Tickets: {
         const cinema = PARAMS.get("cinema");
         const title = PARAMS.get("title");
         const datetime = PARAMS.get("datetime");
@@ -85,7 +85,7 @@
           .join("");
 
         MAIN.insertAdjacentHTML("beforeend", tickets);
-      })();
+      }
     </script>
   </body>
 </html>
